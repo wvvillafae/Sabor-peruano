@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="/assets/img/logo.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabor Peruano | Fusión y Tradición</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <nav class="navbar container">
+            <h1 class="logo animate__animated animate__fadeInLeft">Sabor Peruano</h1>
+            <ul class="nav-links">
+                <li><a href="#inicio" class="animate__animated animate__fadeInDown">Inicio</a></li>
+                <li><a href="#acerca" class="animate__animated animate__fadeInDown animate__delay-0-2s">Acerca</a></li>
+                <li><a href="#menu" class="animate__animated animate__fadeInDown animate__delay-0-4s">Menú</a></li>
+                <li><a href="#reservas" class="animate__animated animate__fadeInDown animate__delay-0-6s">Reservas</a></li>
+                <li><a href="#contacto" class="animate__animated animate__fadeInDown animate__delay-0-8s">Contacto</a></li>
+            </ul>
+            <div class="hamburger-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero-section">
+            
+            <video autoplay muted loop id="heroVideo">
+                <source src="/assets/img/comid.mp4" type="video/mp4">
+                Tu navegador no soporta el tag de video.
+            </video>
+            
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="animate__animated animate__fadeInDown">Sabor Peruano</h2>
+                <p class="animate__animated animate__fadeInUp animate__delay-0-5s">Donde la tradición se fusiona con la excelencia culinaria.</p>
+                <button id="verMenuBtn" class="btn-principal animate__animated animate__zoomIn animate__delay-1s">Explorar Menú <i class="fas fa-chevron-right"></i></button>
+            </div>
+            
+            <div class="hero-overlay"></div>
+        </section>
+
+        <section id="acerca" class="about-section container" data-aos="fade-up" data-aos-duration="1000">
+            <div class="about-image" data-aos="fade-right" data-aos-duration="1200">
+                
+            </div>
+            <div class="about-content" data-aos="fade-left" data-aos-duration="1200">
+                <h3>Nuestra Historia, Nuestro Sabor</h3>
+                <p>En Sabor Peruano, cada plato es un viaje a través de los sabores intensos y la rica cultura del Perú. Desde las montañas andinas hasta la costa pacífica, seleccionamos los ingredientes más frescos para ofrecerte una experiencia auténtica e inolvidable.</p>
+                <p>Nuestros chefs combinan recetas ancestrales con técnicas modernas, creando obras maestras culinarias que deleitarán todos tus sentidos. ¡Bienvenidos a nuestra casa!</p>
+                <button class="btn-secundario">Conoce al Chef <i class="fas fa-user-tie"></i></button>
+            </div>
+        </section>
+        
+        <section id="menu" class="menu-section">
+            <div class="container">
+                <h3 data-aos="fade-down" data-aos-duration="1000">Nuestro Menú Exquisito</h3>
+                
+                <div class="menu-filtros" data-aos="fade-up" data-aos-duration="1000">
+                    <button class="filtro-btn active" data-categoria="todos">Todos</button>
+                    <button class="filtro-btn" data-categoria="ceviches">Ceviches</button>
+                    <button class="filtro-btn" data-categoria="fondos">Platos de Fondo</button>
+                    <button class="filtro-btn" data-categoria="entradas">Entradas</button>
+                    <button class="filtro-btn" data-categoria="postres">Postres</button>
+                    <button class="filtro-btn" data-categoria="bebidas">Bebidas</button>
+                </div>
+                
+                <div id="menu-items-container" class="menu-grid">
+                </div> 
+                </div>
+        </section>
+
+        <section id="reservas" class="reservas-section">
+            <div class="reservas-content container" data-aos="zoom-in" data-aos-duration="1000">
+                <h3>Reserva tu Experiencia Gastronómica</h3>
+                <p>Te invitamos a disfrutar de una noche inolvidable. Haz tu reserva hoy mismo.</p>
+                <button class="btn-principal">Reservar Ahora <i class="fas fa-calendar-alt"></i></button>
+            </div>
+            <div class="reservas-overlay"></div>
+        </section>
+    </main>
+
+    <footer id="contacto">
+        <div class="container footer-grid">
+            <div class="footer-info" data-aos="fade-right" data-aos-duration="1000">
+                <h4>Sabor Peruano</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Av. El Sol 456, Miraflores, Lima</p>
+                <p><i class="fas fa-phone"></i> (01) 234 5678 | 987 654 321</p>
+                <p><i class="fas fa-envelope"></i> info@saborperuano.com</p>
+            </div>
+            <div class="footer-links" data-aos="fade-up" data-aos-duration="1000">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#menu">Menú</a></li>
+                    <li><a href="#reservas">Reservas</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="social-links" data-aos="fade-left" data-aos-duration="1000">
+                <h4>Síguenos</h4>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Sabor Peruano. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true // Las animaciones solo se ejecutan la primera vez que se ven
+        });
+    </script>
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

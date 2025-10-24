@@ -1,0 +1,584 @@
+/* ============================================== */
+/* Variables y Reset Básico */
+/* ============================================== */
+:root {
+    /* Definición de colores principales usando variables CSS */
+    --color-primario: #B53E3E; /* Rojo Inca / Terracota (Usado en títulos, acentos, bordes) */
+    --color-secundario: #D4AF37; /* Dorado / Sol (Usado en botones principales y precios) */
+    --color-acento: #4CAF50; /* Verde de la naturaleza (Para acentos o mensajes de éxito) */
+    --color-oscuro: #2C3E50; /* Azul oscuro elegante (Color principal del texto y fondo del footer) */
+    --color-claro: #F8F8F8; /* Blanco roto (Fondo general y texto claro) */
+    --color-texto-claro: #ECF0F1; /* Gris claro (Texto en fondos oscuros) */
+
+    /* Definición de fuentes */
+    --font-heading: 'Playfair Display', serif; /* Fuente para títulos */
+    --font-body: 'Montserrat', sans-serif; /* Fuente para el cuerpo del texto */
+}
+
+/* Selector universal: aplica a todos los elementos */
+* {
+    /* Reinicio de CSS: elimina márgenes y paddings predeterminados del navegador */
+    margin: 0;
+    padding: 0;
+    /* CLAVE: Asegura que el padding y el border no aumenten el tamaño final de la caja */
+    box-sizing: border-box; 
+}
+
+html {
+    /* Habilita el desplazamiento suave (smooth scroll) al hacer clic en enlaces internos (ej: #menu) */
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-oscuro);
+    background-color: var(--color-claro);
+    line-height: 1.6; /* Espaciado entre líneas para mejor lectura */
+}
+
+/* CLAVE: Contenedor centrado y con ancho máximo para limitar el contenido */
+.container {
+    max-width: 1200px;
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    padding: 0 20px; /* Padding para que el contenido no toque los bordes de la pantalla */
+}
+
+/* ============================================== */
+/* Estilos de Títulos */
+/* ============================================== */
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--color-oscuro);
+    font-weight: 700;
+}
+
+h2 { font-size: 3.5rem; }
+h3 { font-size: 2.5rem; margin-bottom: 1rem; }
+h4 { font-size: 1.8rem; margin-bottom: 0.8rem; }
+
+/* ============================================== */
+/* Estilos de Botones */
+/* ============================================== */
+.btn-principal, .btn-secundario {
+    display: inline-block; /* Permite aplicar ancho/alto y padding */
+    padding: 12px 25px;
+    border: none;
+    border-radius: 50px; /* Forma de píldora para los botones */
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Transición suave para efectos hover */
+    text-decoration: none;
+}
+
+/* Botón Principal (Color Dorado) */
+.btn-principal {
+    background-color: var(--color-secundario);
+    color: var(--color-oscuro);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
+}
+
+.btn-principal:hover {
+    background-color: #f0c95a;
+    transform: translateY(-3px); /* Efecto de "levantar" el botón */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Botón Secundario (Color Terracota) */
+.btn-secundario {
+    background-color: var(--color-primario);
+    color: var(--color-claro);
+    border: 2px solid var(--color-primario);
+}
+
+.btn-secundario:hover {
+    background-color: var(--color-oscuro);
+    border-color: var(--color-oscuro);
+    transform: translateY(-3px);
+}
+
+/* Espaciado del ícono dentro del botón */
+.btn-principal i, .btn-secundario i {
+    margin-left: 8px;
+}
+
+/* ============================================== */
+/* Header y Navegación */
+/* ============================================== */
+.main-header {
+    background-color: rgba(255, 255, 255, 0.95); /* Fondo semitransparente para ver un poco el contenido */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed; /* CLAVE: Fija el header en la parte superior al hacer scroll */
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* CLAVE: Asegura que el header esté por encima de casi todo el contenido */
+    padding: 15px 0;
+}
+
+.navbar {
+    display: flex; /* Habilita Flexbox para alinear logo y enlaces */
+    justify-content: space-between; /* Manda el logo a la izquierda y los enlaces a la derecha */
+    align-items: center; /* Centra verticalmente los elementos */
+}
+
+.logo {
+    font-size: 2.2rem;
+    color: var(--color-primario);
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex; /* Muestra los enlaces en línea horizontal */
+}
+
+.nav-links li {
+    margin-left: 35px;
+}
+
+.nav-links a {
+    color: var(--color-oscuro);
+    text-decoration: none;
+    font-weight: 600;
+    position: relative; /* CLAVE: Necesario para el efecto de subrayado (::after) */
+    transition: color 0.3s;
+}
+
+/* Subrayado animado (línea que aparece al pasar el mouse) */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0; /* Empieza con ancho cero */
+    height: 2px;
+    background-color: var(--color-secundario);
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s ease-out; /* Transición en el ancho */
+}
+
+.nav-links a:hover::after {
+    width: 100%; /* El ancho se expande al 100% al pasar el mouse */
+}
+
+.hamburger-menu {
+    display: none; /* Oculto por defecto (solo se muestra en @media queries) */
+    font-size: 1.8rem;
+    color: var(--color-oscuro);
+    cursor: pointer;
+}
+
+/* ============================================== */
+/* Sección Hero (Inicio) */
+/* ============================================== */
+.hero-section {
+    height: 100vh;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;
+    color: var(--color-claro);
+    position: relative; /* CLAVE: Contiene a los hijos posicionados de forma absoluta (video, overlay, contenido) */
+    padding-top: 80px; 
+    overflow: hidden; /* Oculta cualquier desborde (como el del video) */
+}
+
+/* Video de Fondo */
+#heroVideo {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; /* CLAVE: Escala el video para que cubra todo el contenedor sin dejar espacios */
+    z-index: 0; /* Fondo */
+}
+
+/* Overlay (capa oscura) */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); 
+    z-index: 1; /* Encima del video (0) */
+}
+
+/* Contenido Principal (La frase) */
+.hero-content {
+    margin-right: -3%; /* Esto puede ser un error de alineación; se recomienda dejarlo en 0 */
+    position: relative; 
+    z-index: 2; /* CLAVE: Encima del overlay (1) */
+    max-width: 800px; 
+    padding: 0 20px; 
+}
+
+/* Estilos para el texto dentro de hero-content */
+.hero-content h2 {
+    font-size: 3.5rem; 
+    margin-bottom: 10px;
+    font-family: var(--font-heading); 
+    color: var(--color-claro); 
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: var(--color-claro);
+}
+
+/* CLAVE: Previene la barra de desplazamiento horizontal no deseada */
+html, body {
+    overflow-x: hidden; 
+    width: 100%;
+}
+
+/* Botón de Control de Audio */
+.btn-audio {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--color-claro);
+    color: var(--color-claro);
+    padding:10px 15px;
+    border-radius: 70px;
+    margin: 500%; /* ESTO ES UN ERROR: 500% moverá el botón fuera de la vista. Se recomienda un valor en 'px' o 'rem'. */
+    cursor: pointer;
+    font-size: 1.rem;
+    margin-top: -250px; 
+    transition: background 0.3s ease;
+    z-index: 3; /* Asegura que esté por encima del contenido (2) */
+}
+
+.btn-audio:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* ============================================== */
+/* About Section (Acerca de) */
+/* ============================================== */
+.about-section {
+    padding: 80px 0;
+    display: flex; /* Acomoda la imagen y el contenido lado a lado */
+    gap: 40px; /* Espacio entre la imagen y el contenido */
+    align-items: center;
+    background-color: var(--color-claro);
+}
+
+.about-image {
+    flex: 1; /* Ocupa la mitad del espacio (o igual al contenido) */
+    min-height: 400px;
+    /* Fondo con imagen de ejemplo */
+    background: url('/assets/img/image.png') no-repeat center center/cover; 
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    background-size: cover;
+    background-position: center;
+}
+
+.about-content {
+    flex: 1; 
+    text-align: left;
+}
+
+.about-content h3 {
+    color: var(--color-primario);
+    margin-bottom: 20px;
+    font-size: 2.8rem;
+}
+
+.about-content p {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* ============================================== */
+/* Menu Section */
+/* ============================================== */
+.menu-section {
+    padding: 80px 0;
+    background-color: #fefefe;
+    text-align: center;
+}
+
+.menu-section h3 {
+    color: var(--color-primario);
+    margin-bottom: 3rem;
+}
+
+.menu-filtros {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-wrap: wrap; /* Permite que los botones salten de línea en pantallas pequeñas */
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Estilos de los botones de filtro */
+.filtro-btn {
+    background-color: var(--color-claro);
+    color: var(--color-oscuro);
+    border: 2px solid var(--color-primario);
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+/* Estilo para el botón activo y el efecto hover */
+.filtro-btn.active, .filtro-btn:hover {
+    background-color: var(--color-primario);
+    color: var(--color-claro);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Contenedor de la cuadrícula de platos */
+.menu-grid {
+    display: grid;
+    /* CLAVE: Crea columnas de ancho adaptable, mínimo 280px */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 30px;
+}
+
+.menu-item {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: left;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.menu-item:hover {
+    transform: translateY(-7px); /* Efecto de levantamiento al pasar el mouse */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsión */
+}
+
+.item-info {
+    padding: 20px;
+}
+
+.item-info h4 {
+    color: var(--color-primario);
+    margin-bottom: 8px;
+    font-size: 1.6rem;
+}
+
+/* Descripción del plato */
+.item-info p {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 10px;
+    
+    /* CLAVE: Limita el texto a un máximo de 3 líneas y añade puntos suspensivos */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    -webkit-line-clamp: 3; /* Define el número máximo de líneas a mostrar */
+}
+
+.item-info .precio {
+    font-weight: bold;
+    color: var(--color-secundario);
+    font-size: 1.3rem;
+    display: block;
+    margin-top: 10px;
+}
+
+/* ============================================== */
+/* Reservas Section */
+/* ============================================== */
+.reservas-section {
+    /* CLAVE: Imagen de fondo con capa oscura y efecto parallax (attachment: fixed) */
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('reservas-bg.jpg') no-repeat center center/cover;
+    padding: 100px 0;
+    text-align: center;
+    color: var(--color-claro);
+    position: relative;
+    background-attachment: fixed; /* Efecto parallax */
+}
+
+.reservas-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 1;
+}
+
+.reservas-content {
+    position: relative;
+    z-index: 2; /* Sobre el overlay */
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.reservas-content h3 {
+    font-family: var(--font-heading);
+    color: var(--color-claro);
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.reservas-content p {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    color: var(--color-texto-claro);
+}
+
+/* ============================================== */
+/* Footer (Pie de Página) */
+/* ============================================== */
+footer {
+    background-color: var(--color-oscuro);
+    color: var(--color-texto-claro);
+    padding: 60px 0 20px;
+}
+
+.footer-grid {
+    /* CLAVE: Tres o más columnas de ancho adaptable */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.footer-info h4, .footer-links h4, .social-links h4 {
+    color: var(--color-secundario);
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+}
+
+.footer-info i {
+    margin-right: 10px;
+    color: var(--color-secundario);
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links a {
+    color: var(--color-texto-claro);
+    text-decoration: none;
+    margin-bottom: 10px;
+    display: block;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--color-secundario);
+}
+
+.social-links a {
+    color: var(--color-texto-claro);
+    font-size: 1.8rem;
+    margin-right: 20px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--color-secundario);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+}
+
+/* ============================================== */
+/* Media Queries (Diseño Adaptable/Responsive) */
+/* ============================================== */
+
+/* Estilos para pantallas medianas (tabletas y algunos portátiles) */
+@media (max-width: 992px) {
+    .hero-content h2 {
+        font-size: 3.5rem;
+    }
+    .about-section {
+        flex-direction: column; /* Apila imagen y contenido verticalmente */
+        text-align: center;
+    }
+    .about-image {
+        width: 100%;
+        max-width: 600px;
+    }
+    .about-content {
+        text-align: center;
+    }
+}
+
+/* Estilos para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .logo {
+        margin-bottom: 15px;
+    }
+    .nav-links {
+        display: none; /* Oculta la navegación principal por defecto */
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 15px 0;
+        border-top: 1px solid #eee;
+    }
+    .nav-links.active {
+        display: flex; /* CLAVE: Muestra la navegación cuando el JS añade la clase 'active' (menú abierto) */
+    }
+    .nav-links li {
+        margin: 10px 0;
+    }
+    .hamburger-menu {
+        display: block; /* Muestra el ícono de hamburguesa */
+        position: absolute;
+        right: 20px;
+        top: 25px;
+    }
+    .hero-content h2 {
+        font-size: 2.8rem;
+    }
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+    .menu-grid {
+        grid-template-columns: 1fr; /* Una sola columna para los platos en móvil */
+    }
+    .reservas-content h3 {
+        font-size: 2.5rem;
+    }
+    .footer-grid {
+        grid-template-columns: 1fr; /* Una sola columna para el footer en móvil */
+        text-align: center;
+    }
+    /* Centra los íconos con el texto en el footer */
+    .footer-info p {
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
+    .footer-links ul {
+        padding-left: 0;
+    }
+}
+
+/* Clases de utilidad */
+.text-center { text-align: center; }
+.my-4 { margin: 2rem 0; }
