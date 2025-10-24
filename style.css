@@ -268,7 +268,7 @@ html, body {
     flex: 1; /* Ocupa la mitad del espacio (o igual al contenido) */
     min-height: 400px;
     /* Fondo con imagen de ejemplo */
-    background: url('/assets/img/image.png') no-repeat center center/cover; 
+    background: url('image.png') no-repeat center center/cover; 
     border-radius: 10px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     background-size: cover;

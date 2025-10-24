@@ -132,12 +132,11 @@ function displayMenuItems(items) {
     }
 
     // Itera sobre cada plato en el array (filtrado o completo)
-    items.forEach(item => {
-        // Usa un 'template literal' (comillas invertidas) para crear el HTML del plato
+   items.forEach(item => {
         const menuItemHTML = `
             <div class="menu-item ${item.categoria}" data-aos="fade-up" data-aos-duration="800">
                 
-                <img src="./assets/img/${item.img}" alt="${item.nombre}"> 
+               <img src="${item.img}" alt="${item.nombre}">
                 
                 <div class="item-info">
                     <h4>${item.nombre}</h4>
